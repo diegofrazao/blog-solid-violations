@@ -3,6 +3,7 @@ package br.edu.ifpb.padroes.service;
 import br.edu.ifpb.padroes.modelo.Usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -26,15 +27,15 @@ public class UsuarioDAO {
             statement.execute("INSERT INTO USUARIO( ID, NOME, LOGIN, SENHA) VALUES (1, 'admin', 'admin', '123')");
 
             /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO #### */
-            PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
-            ResultSet resultSet = stmt.executeQuery();
-
-            while (resultSet.next()) {
-                Integer id = resultSet.getInt("ID");
-                String nome = resultSet.getString("NOME");
-
-                System.out.println( id + " - " + nome);
-            }
+//            PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
+//            ResultSet resultSet = stmt.executeQuery();
+//
+//            while (resultSet.next()) {
+//                Integer id = resultSet.getInt("ID");
+//                String nome = resultSet.getString("NOME");
+//
+//                System.out.println( id + " - " + nome);
+//            }
 
             return connection;
         } catch (SQLException e) {
@@ -65,6 +66,21 @@ public class UsuarioDAO {
     }
 
     /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO #### */
+    public void readUsuarios() {
+        Connection conexao = connect();
+        try( PreparedStatement stmt = conexao.prepareStatement("select * from USUARIO")){
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("ID");
+                String nome = resultSet.getString("NOME");
+
+                System.out.println( id + " - " + nome);
+            }
+        }catch (SQLException ex){
+            this.trataExcecao(ex);
+        }
+    }
+
     public List<Usuario> listUsuarios() {
         this.trataExcecao(new Exception("Não implementado ainda"));
         return null;
