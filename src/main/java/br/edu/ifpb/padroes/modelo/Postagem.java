@@ -3,15 +3,10 @@ package br.edu.ifpb.padroes.modelo;
 public class Postagem {
 
     public enum PostagemTipo { PUBLICA, PRIVADA }
-
     private Long id;
-
     private String titulo;
-
     private Usuario usuario;
-
     private String mensagem;
-
     private PostagemTipo postagemTipo;
 
     public Long getId() {

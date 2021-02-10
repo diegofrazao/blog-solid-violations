@@ -5,7 +5,6 @@ import java.util.Date;
 public class PostagemResposta extends Postagem {
 
     private Date data;
-
     private Postagem postagem;
 
     public Postagem getPostagem() {

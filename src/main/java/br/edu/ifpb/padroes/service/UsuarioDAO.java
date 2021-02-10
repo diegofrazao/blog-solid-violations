@@ -25,6 +25,7 @@ public class UsuarioDAO {
             statement.execute("CREATE TABLE IF NOT EXISTS USUARIO( ID INTEGER, NOME VARCHAR, LOGIN VARCHAR, SENHA VARCHAR )");
             statement.execute("INSERT INTO USUARIO( ID, NOME, LOGIN, SENHA) VALUES (1, 'admin', 'admin', '123')");
 
+            /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO #### */
             PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
             ResultSet resultSet = stmt.executeQuery();
 
@@ -63,6 +64,7 @@ public class UsuarioDAO {
         this.trataExcecao(new Exception("Não implementado ainda"));
     }
 
+    /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO #### */
     public List<Usuario> listUsuarios() {
         this.trataExcecao(new Exception("Não implementado ainda"));
         return null;

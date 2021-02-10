@@ -5,21 +5,18 @@ import java.util.List;
 public class Usuario {
 
     private Long id;
-
     private String nome;
-
     private String login;
-
     private String senha;
-
     private List<Postagem> postagens;
 
     public List<Postagem> getPostagens() {
         return postagens;
     }
 
-    public void setPostagens(List<Postagem> postagens) {
-        this.postagens = postagens;
+    /* FRAZÃO -> Liskov's Substitution Principle */
+    public void setPostagens(Postagem postagens) {
+        this.postagens.add(postagens);
     }
 
     public Long getId() {
