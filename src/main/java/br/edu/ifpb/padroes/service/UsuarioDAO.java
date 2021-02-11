@@ -26,7 +26,7 @@ public class UsuarioDAO {
             statement.execute("CREATE TABLE IF NOT EXISTS USUARIO( ID INTEGER, NOME VARCHAR, LOGIN VARCHAR, SENHA VARCHAR )");
             statement.execute("INSERT INTO USUARIO( ID, NOME, LOGIN, SENHA) VALUES (1, 'admin', 'admin', '123')");
 
-            /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO #### */
+            /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO SRP #### */
 //            PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
 //            ResultSet resultSet = stmt.executeQuery();
 //
@@ -36,6 +36,8 @@ public class UsuarioDAO {
 //
 //                System.out.println( id + " - " + nome);
 //            }
+
+//          Angelo: metodo readUsuarios criado
 
             return connection;
         } catch (SQLException e) {
@@ -65,7 +67,7 @@ public class UsuarioDAO {
         this.trataExcecao(new Exception("Não implementado ainda"));
     }
 
-    /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO #### */
+/*Principio SRP*/
     public void readUsuarios() {
         Connection conexao = connect();
         try( PreparedStatement stmt = conexao.prepareStatement("select * from USUARIO")){

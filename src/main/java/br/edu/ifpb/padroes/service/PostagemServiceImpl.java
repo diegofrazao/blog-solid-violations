@@ -7,6 +7,7 @@ public class PostagemServiceImpl implements PostagemService{
 
     private PostagemDAO postagemDAO = new PostagemDAO("banco.db");
 
+    /* Angelo: violação do principio ocp*/
     @Override
     public void adicionarPostagem(Postagem postagem) {
         if (postagem.getPostagemTipo().equals(Postagem.PostagemTipo.PUBLICA)) {
