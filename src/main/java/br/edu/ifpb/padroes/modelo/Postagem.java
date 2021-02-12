@@ -5,7 +5,7 @@ public class Postagem {
     public enum PostagemTipo { PUBLICA, PRIVADA }
     private Long id;
     private String titulo;
-    private Usuario usuario;
+    protected Usuario usuario;
     private String mensagem;
     private PostagemTipo postagemTipo;
 
