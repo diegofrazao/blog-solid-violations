@@ -1,18 +1,6 @@
 package br.edu.ifpb.padroes.service;
 
-import br.edu.ifpb.padroes.modelo.Usuario;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-
-public class UsuarioDAO {
-
-    private String arquivoBanco;
-    public UsuarioDAO(String arquivoBanco) {
-        this.arquivoBanco = arquivoBanco;
-    }
+public class UsuarioDAOsql implements IUsuarioDAO{
 
     private Connection connect() {
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:"+this.arquivoBanco)) {
@@ -67,7 +55,7 @@ public class UsuarioDAO {
         this.trataExcecao(new Exception("Não implementado ainda"));
     }
 
-/*Principio SRP*/
+    /*Principio SRP*/
     public void readUsuarios() {
         Connection conexao = connect();
         try( PreparedStatement stmt = conexao.prepareStatement("select * from USUARIO")){
@@ -96,6 +84,5 @@ public class UsuarioDAO {
     public void trataExcecao(Exception ex) {
         Logger.getLogger(UsuarioServiceImpl.class.getName()).warning(ex.getMessage());
     }
-
 
 }
