@@ -1,5 +1,13 @@
 package br.edu.ifpb.padroes.service;
 
+import br.edu.ifpb.padroes.modelo.Usuario;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+
 public class UsuarioDAOsql implements IUsuarioDAO{
 
     private Connection connect() {
