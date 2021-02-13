@@ -6,7 +6,8 @@ import java.util.List;
 
 public class UsuarioServiceImpl implements UsuarioService {
 
-    private UsuarioDAO usuarioDAO = new UsuarioDAO("banco.db");
+    // DIP ->
+    private UsuarioDAO usuarioDAO = new UsuarioDAOsqlite("banco.db");
 
     @Override
     public void criarUsuario(Usuario usuario) {
