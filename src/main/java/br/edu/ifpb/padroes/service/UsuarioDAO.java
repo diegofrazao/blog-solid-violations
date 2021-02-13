@@ -72,6 +72,4 @@ public class UsuarioDAO {
     public void trataExcecao(Exception ex) {
         Logger.getLogger(UsuarioServiceImpl.class.getName()).warning(ex.getMessage());
     }
-
-
 }
