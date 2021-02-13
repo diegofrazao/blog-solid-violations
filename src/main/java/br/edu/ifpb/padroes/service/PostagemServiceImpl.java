@@ -2,15 +2,15 @@ package br.edu.ifpb.padroes.service;
 
 import br.edu.ifpb.padroes.modelo.Postagem;
 
-// FRAZÃO -> Interface Segregation Principle
+// ISP ->
 public class PostagemServiceImpl implements PostagemService{
 
     private PostagemDAO postagemDAO = new PostagemDAO("banco.db");
 
-    /* Angelo: violação do principio ocp*/
+    // OCP ->
     @Override
     public void adicionarPostagem(Postagem postagem) {
-
+        this.postagemDAO.adicionarPostagem(postagem);
     }
 
     @Override

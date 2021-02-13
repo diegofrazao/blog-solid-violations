@@ -5,7 +5,7 @@ import br.edu.ifpb.padroes.modelo.PostagemResposta;
 
 import java.util.Date;
 
-// FRAZÃO -> Interface Segregation Principle
+// ISP ->
 public class RespostaServicelmpl implements RespostaService{
 
     private PostagemDAO postagemDAO = new PostagemDAO("banco.db");
