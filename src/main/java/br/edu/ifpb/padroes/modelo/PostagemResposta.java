@@ -22,7 +22,8 @@ public class PostagemResposta extends Postagem {
     public void setData(Date data) {
         this.data = data;
     }
-    // LSP ->
+
+    // LSP -> comportamento do método abaixo não faz modificações no método da super classe
     @Override
     public Usuario getUsuario() {
         return this.usuario;

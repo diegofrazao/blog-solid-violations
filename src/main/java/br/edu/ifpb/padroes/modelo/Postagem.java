@@ -6,7 +6,11 @@ public class Postagem {
     private String titulo;
     protected Usuario usuario;
     private String mensagem;
-    // OCP ->
+
+    /* OCP ->
+        PostagemTipo alterado para String, assim não haverá necessidade de crição dos métodos addPostagemPublica
+        e addPostagemPrivada */
+
     private String postagemTipo;
 
     public Long getId() {
@@ -25,7 +29,7 @@ public class Postagem {
         this.titulo = titulo;
     }
 
-    // LSP ->
+    // LSP -> verificar classe PostagemResposta
     public Usuario getUsuario() {
         return usuario;
     }
@@ -42,12 +46,12 @@ public class Postagem {
         this.mensagem = mensagem;
     }
 
-    // OCP ->
+    // OCP -> retorno do método alterado, conforme modifação do enum para String
     public String getPostagemTipo() {
         return postagemTipo;
     }
 
-    // OCP ->
+    // OCP -> parâmetro do metodo alterado, conforme modificação do enum para String
     public void setPostagemTipo(String postagemTipo) {
         this.postagemTipo = postagemTipo;
     }

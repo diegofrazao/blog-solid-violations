@@ -5,7 +5,10 @@ import br.edu.ifpb.padroes.modelo.Usuario;
 import java.sql.Connection;
 import java.util.List;
 
-// DIP ->
+/* DIP ->
+    Interface generalizada para UsuarioDAO
+ */
+
 public interface UsuarioDAO {
 
     public Connection connect();

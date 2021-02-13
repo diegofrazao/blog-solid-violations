@@ -6,7 +6,9 @@ import java.sql.*;
 import java.util.List;
 import java.util.logging.Logger;
 
-// DIP ->
+/* DIP ->
+    Classe criada para o banco especifica para SqLite com a implementação da Interface UsuarioDAO
+ */
 public class UsuarioDAOsqlite implements UsuarioDAO{
 
     private String arquivoBanco;

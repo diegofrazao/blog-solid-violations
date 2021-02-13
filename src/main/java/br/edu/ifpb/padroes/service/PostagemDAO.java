@@ -28,7 +28,10 @@ public class PostagemDAO {
         return null;
     }
 
-    // OCP ->
+    /* OCP ->
+        métodos adicionarPostagemPublica e adicionarPostagemPrivada removidos dando lugar a adicionarPostagem
+        não violando o princípio uma vez que ambas terão seu comportamento identico ao removermos o enum da classe Postagem.
+    */
     public void adicionarPostagem(Postagem postagem) {
         Connection conexao = connect();
         try (PreparedStatement stmt = conexao.prepareStatement("INSERT INTO POSTAGEM( ID, TITULO, USUARIO_ID, MENSAGEM, TIPO) VALUES (?, ?, ?, ?, ?)")) {

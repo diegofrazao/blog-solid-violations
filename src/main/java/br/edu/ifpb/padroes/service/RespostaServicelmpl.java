@@ -5,7 +5,9 @@ import br.edu.ifpb.padroes.modelo.PostagemResposta;
 
 import java.util.Date;
 
-// ISP ->
+/* SRP, ISP ->
+    conforme os princípios SRP e ISP, esta Interface foi criada, a qual contém apenas os métodos correspondentes a RespostaService.
+*/
 public class RespostaServicelmpl implements RespostaService{
 
     private PostagemDAO postagemDAO = new PostagemDAO("banco.db");

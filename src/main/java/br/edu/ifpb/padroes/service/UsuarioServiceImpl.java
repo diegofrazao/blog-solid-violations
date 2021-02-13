@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UsuarioServiceImpl implements UsuarioService {
 
-    // DIP ->
+    // DIP -> Referência a Interface UsuarioDAO
     private UsuarioDAO usuarioDAO = new UsuarioDAOsqlite("banco.db");
 
     @Override
