@@ -1,6 +1,17 @@
 package br.edu.ifpb.padroes.service;
 
-public class UsuarioDAOsql implements IUsuarioDAO{
+import br.edu.ifpb.padroes.modelo.Usuario;
+
+import java.sql.*;
+import java.util.List;
+import java.util.logging.Logger;
+
+public class UsuarioDAO {
+
+    private String arquivoBanco;
+    public UsuarioDAO(String arquivoBanco) {
+        this.arquivoBanco = arquivoBanco;
+    }
 
     private Connection connect() {
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:"+this.arquivoBanco)) {
@@ -10,22 +21,15 @@ public class UsuarioDAOsql implements IUsuarioDAO{
             statement.execute("CREATE TABLE IF NOT EXISTS USUARIO( ID INTEGER, NOME VARCHAR, LOGIN VARCHAR, SENHA VARCHAR )");
             statement.execute("INSERT INTO USUARIO( ID, NOME, LOGIN, SENHA) VALUES (1, 'admin', 'admin', '123')");
 
-            //Criando tabela de produtos
-            statement.execute("CREATE TABLE IF NOT EXISTS USUARIO( ID INTEGER, NOME VARCHAR, LOGIN VARCHAR, SENHA VARCHAR )");
-            statement.execute("INSERT INTO USUARIO( ID, NOME, LOGIN, SENHA) VALUES (1, 'admin', 'admin', '123')");
+            PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
+            ResultSet resultSet = stmt.executeQuery();
 
-            /* #### VIOLAÇÃO DO PRIMEIRO PRINCIPIO SRP #### */
-//            PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
-//            ResultSet resultSet = stmt.executeQuery();
-//
-//            while (resultSet.next()) {
-//                Integer id = resultSet.getInt("ID");
-//                String nome = resultSet.getString("NOME");
-//
-//                System.out.println( id + " - " + nome);
-//            }
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("ID");
+                String nome = resultSet.getString("NOME");
 
-//          Angelo: metodo readUsuarios criado
+                System.out.println( id + " - " + nome);
+            }
 
             return connection;
         } catch (SQLException e) {
@@ -55,22 +59,6 @@ public class UsuarioDAOsql implements IUsuarioDAO{
         this.trataExcecao(new Exception("Não implementado ainda"));
     }
 
-    /*Principio SRP*/
-    public void readUsuarios() {
-        Connection conexao = connect();
-        try( PreparedStatement stmt = conexao.prepareStatement("select * from USUARIO")){
-            ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
-                Integer id = resultSet.getInt("ID");
-                String nome = resultSet.getString("NOME");
-
-                System.out.println( id + " - " + nome);
-            }
-        }catch (SQLException ex){
-            this.trataExcecao(ex);
-        }
-    }
-
     public List<Usuario> listUsuarios() {
         this.trataExcecao(new Exception("Não implementado ainda"));
         return null;
@@ -84,5 +72,6 @@ public class UsuarioDAOsql implements IUsuarioDAO{
     public void trataExcecao(Exception ex) {
         Logger.getLogger(UsuarioServiceImpl.class.getName()).warning(ex.getMessage());
     }
+
 
 }

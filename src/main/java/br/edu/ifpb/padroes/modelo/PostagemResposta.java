@@ -22,12 +22,9 @@ public class PostagemResposta extends Postagem {
     public void setData(Date data) {
         this.data = data;
     }
-/*Violacao LSP */
-//    @Override
-    public Usuario getUsuarioResposta() {
-        if (usuario.getPostagens().size() == 0) {
-            return null;
-        }
+    // LSP ->
+    @Override
+    public Usuario getUsuario() {
         return this.usuario;
     }
 }

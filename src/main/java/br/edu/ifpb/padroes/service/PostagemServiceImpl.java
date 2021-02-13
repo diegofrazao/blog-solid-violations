@@ -10,11 +10,7 @@ public class PostagemServiceImpl implements PostagemService{
     /* Angelo: violação do principio ocp*/
     @Override
     public void adicionarPostagem(Postagem postagem) {
-        if (postagem.getPostagemTipo().equals(Postagem.PostagemTipo.PUBLICA)) {
-            this.postagemDAO.addPostagemPublica(postagem);
-        } else if (postagem.getPostagemTipo().equals(Postagem.PostagemTipo.PRIVADA)) {
-            this.postagemDAO.addPostagemPrivada(postagem);
-        }
+
     }
 
     @Override

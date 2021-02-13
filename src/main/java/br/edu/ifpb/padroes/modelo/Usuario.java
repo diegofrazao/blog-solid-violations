@@ -14,7 +14,6 @@ public class Usuario {
         return postagens;
     }
 
-    /* FRAZÃO -> Liskov's Substitution Principle */
     public void setPostagens(Postagem postagens) {
         this.postagens.add(postagens);
     }
